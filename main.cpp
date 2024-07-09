@@ -22,7 +22,7 @@ void merge(int l, int r, int m) {
     int start = l;
 
     while (ind1 < t1.size() && ind2 < t2.size()) {
-        if (t1[ind1] < t2[ind2]) {
+        if (t1[ind1] <= t2[ind2]) {
             cnt += ind2;
             a[start] = t1[ind1];
             ind1++;
@@ -30,14 +30,15 @@ void merge(int l, int r, int m) {
             a[start] = t2[ind2];
             ind2++;
         }
+
         start++;
     }
 
     while (ind1 < t1.size()) {
         a[start] = t1[ind1];
-        ind1++;
         cnt += ind2;
         start++;
+        ind1++;
     }
 
     while (ind2 < t2.size()) {
@@ -73,4 +74,6 @@ int main() {
     merge_sort(0, n - 1);
 
     cout << cnt << '\n';
+
+    // протестил на acmp 1231
 }
